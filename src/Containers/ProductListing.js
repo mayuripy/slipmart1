@@ -2,8 +2,8 @@ import React ,{useEffect} from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // import {action} from "./redux/actions/productActions";
-
 import ProductComponent from "./ProductComponent";
+import { SET_PRODUCTS } from "../redux/reducers/productReducer";
 
 
 const ProductListing = () => {
@@ -16,6 +16,7 @@ const ProductListing = () => {
         console.log("Err",err);
       });
       console.log((response.data));
+      dispatch(SET_PRODUCTS(response.data));
   };
 
    useEffect(() => {fetchproducts()},[]);
